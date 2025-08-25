@@ -6,7 +6,6 @@ A minimal Python application that uses [CrewAI](https://github.com/joaomdmoura/c
 - One CrewAI agent with passive Amass tool
 - Interactive domain intake (if not provided via CLI)
 - Writes parsed subdomains to `outputs/<domain>_subdomains.json`
-- Requires explicit authorization before running
 
 ## Installation
 1. Install Python 3.10+
@@ -20,7 +19,7 @@ A minimal Python application that uses [CrewAI](https://github.com/joaomdmoura/c
 Set up environment variables (optional) in a `.env` file or your shell:
 ```bash
 export OPENAI_API_KEY=your_key
-export MODEL_NAME=gpt-4o-mint  # optional, defaults to gpt-4o-mint
+export MODEL_NAME=gpt-4o-mini  # optional, defaults to gpt-4o-mint
 export AUTHORIZED=true         # or use --authorized flag
 ```
 

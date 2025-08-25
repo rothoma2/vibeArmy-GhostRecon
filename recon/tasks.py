@@ -26,4 +26,15 @@ passive_enum_task = Task(
     agent=passive_recon_agent,
 )
 
+# Summarize task: count unique subdomains enumerated for the target domain
+summarize_subdomains_task = Task(
+    description=(
+        "For {target_domain}, use the count_unique_subdomains tool to count how many unique subdomains were enumerated. "
+        "Return only the count and a brief summary."
+    ),
+    expected_output="An integer count of unique subdomains and a one-sentence summary.",
+    agent=passive_recon_agent,
+)
+
 __all__ = ["domain_intake_task", "passive_enum_task"]
+__all__.append("summarize_subdomains_task")
