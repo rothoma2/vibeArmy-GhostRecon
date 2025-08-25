@@ -8,6 +8,7 @@ from langchain_openai import ChatOpenAI
 
 from recon.tools.amass_tool import amass_passive_enum
 from recon.tools.count_tool import count_unique_subdomains
+from recon.tools.dnsx_tool import dnsx_bulk_resolve
 
 llm = ChatOpenAI(model=os.getenv("MODEL_NAME", "gpt-4o-mini"))
 
@@ -19,8 +20,11 @@ passive_recon_agent = Agent(
         "bug-bounty scope. Prioritizes privacy, legality, and reproducibility; "
         "never performs active probing."
     ),
-    tools=[amass_passive_enum,
-           count_unique_subdomains],
+    tools=[
+        amass_passive_enum,
+        count_unique_subdomains,
+        dnsx_bulk_resolve,
+    ],
     allow_delegation=False,
     verbose=True,
     llm=llm,

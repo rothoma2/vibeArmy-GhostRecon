@@ -26,6 +26,18 @@ passive_enum_task = Task(
     agent=passive_recon_agent,
 )
 
+validate_subdomains_task = Task(
+    description=(
+        "Validate candidate subdomains from {candidate_subdomains} using the "
+        "dnsx_bulk_resolve tool. Return JSON with keys 'resolvable' and 'results' "
+        "listing resolved hosts and their IP addresses."
+    ),
+    expected_output=(
+        "A JSON object with keys: resolvable (list[str]) and results (list[dict{host: str, ips: list[str]}])."
+    ),
+    agent=passive_recon_agent,
+)
+
 # Summarize task: count unique subdomains enumerated for the target domain
 summarize_subdomains_task = Task(
     description=(
@@ -38,3 +50,4 @@ summarize_subdomains_task = Task(
 
 __all__ = ["domain_intake_task", "passive_enum_task"]
 __all__.append("summarize_subdomains_task")
+__all__.append("validate_subdomains_task")

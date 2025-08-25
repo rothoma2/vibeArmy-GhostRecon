@@ -7,7 +7,11 @@ from typing import Dict, Optional
 from crewai import Crew, Process
 
 from recon.agents import passive_recon_agent
-from recon.tasks import summarize_subdomains_task, passive_enum_task
+from recon.tasks import (
+    summarize_subdomains_task,
+    passive_enum_task,
+    validate_subdomains_task,
+)
 from recon.utils import prompt_for_domain
 
 
@@ -18,8 +22,11 @@ def run(target_domain: Optional[str]) -> Dict[str, object]:
 
     crew = Crew(
         agents=[passive_recon_agent],
-        tasks=[passive_enum_task, 
-               summarize_subdomains_task],
+        tasks=[
+            passive_enum_task,
+            validate_subdomains_task,
+            summarize_subdomains_task,
+        ],
         process=Process.sequential,
     )
 
